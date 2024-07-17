@@ -12,6 +12,23 @@
             let comChoice=chioces[Math.floor(Math.random()*chioces.length)];
             return comChoice;
         }
+        
+        let humanScore= 0;
+        let computerScore= 0;
+
+        function playRound(humanChoice, computerChoice){
+            if(humanChoice==computerChoice){
+                return "It's a DRAW";
+            }else if(
+                humanChoice=="ROCK"&& computerChoice=="SCISSORS"||
+                humanChoice=="SCISSORS"&&computerChoice=="PAPER"||
+                humanChoice=="PAPER"&&computerChoice=="ROCK"
+            ){
+                return "player";
+            }else{
+                return "computer";
+            }
+        }
 
         function getHumanChoice(){
             let validChoice= false;
@@ -27,7 +44,27 @@
                 }
             }    
         }
-        
+        console.log("Welcome PLAYER!");
+        let humanSelection= getHumanChoice();
+        console.log(humanSelection);
+        let computerSelection= getComputerChoice();
+        console.log(computerSelection);
+        console.log(playRound(humanSelection, computerSelection));
+
+
+        function playGame(){
+            for(let i=0; i<5; i++){
+                if(playRound(humanSelection, computerSelection)=="player"){
+                    humanScore= humanScore++;
+                    return `You win! ${humanSelection} beats ${computerSelection}`;
+                }else{
+                    computerScore= computerScore++
+                    return `You loss! ${computerSelection} beats ${humanSelection}`;
+                }
+            }
+            // return "Game Over!";
+        }
+        // console.log(playGame())
     </script>
 </body>
 </html>
