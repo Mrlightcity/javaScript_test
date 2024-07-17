@@ -12,6 +12,22 @@
             let comChoice=chioces[Math.floor(Math.random()*chioces.length)];
             return comChoice;
         }
+
+        function getHumanChoice(){
+            let validChoice= false;
+            while (validChoice==false){
+                let myChoice= prompt("Enter: ROCK PAPER SCISSORS", '');
+                if(myChoice==null){
+                    continue;
+                }
+                let capital= myChoice.toUpperCase();
+                if(chioces.includes(capital)){
+                    validChoice== true;
+                    return capital
+                }
+            }    
+        }
+        
     </script>
 </body>
 </html>
