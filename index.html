@@ -8,17 +8,15 @@
 <body>
     <script>
         const chioces=["ROCK","PAPER","SCISSORS"];
+
         function getComputerChoice(){
             let comChoice=chioces[Math.floor(Math.random()*chioces.length)];
             return comChoice;
         }
-        
-        let humanScore= 0;
-        let computerScore= 0;
 
-        function playRound(humanChoice, computerChoice){
+        function checkWinner(humanChoice, computerChoice){
             if(humanChoice==computerChoice){
-                return "It's a DRAW";
+                return "draw";
             }else if(
                 humanChoice=="ROCK"&& computerChoice=="SCISSORS"||
                 humanChoice=="SCISSORS"&&computerChoice=="PAPER"||
@@ -30,41 +28,60 @@
             }
         }
 
+        function playRound(humanChoice, computerChoice){
+            const result= checkWinner(humanChoice, computerChoice);
+            if(result=="draw"){
+                return "It's a DRAW";
+            }else if(result=="player"){
+                return `You win! ${humanChoice} beats ${computerChoice}`;
+            }else{
+                return `You loss! ${computerChoice} beats ${humanChoice}`;
+            }
+        }
         function getHumanChoice(){
             let validChoice= false;
             while (validChoice==false){
-                let myChoice= prompt("Enter: ROCK PAPER SCISSORS", '');
+                const myChoice= prompt("Enter: ROCK or PAPER or SCISSORS", '');
                 if(myChoice==null){
                     continue;
                 }
-                let capital= myChoice.toUpperCase();
+                const capital= myChoice.toUpperCase();
                 if(chioces.includes(capital)){
                     validChoice== true;
-                    return capital
+                    return capital;
                 }
             }    
         }
-        console.log("Welcome PLAYER!");
-        let humanSelection= getHumanChoice();
-        console.log(humanSelection);
-        let computerSelection= getComputerChoice();
-        console.log(computerSelection);
-        console.log(playRound(humanSelection, computerSelection));
-
-
+        
         function playGame(){
+            let humanScore= 0;
+            let computerScore= 0;
+            console.log("Welcome PLAYER!");
             for(let i=0; i<5; i++){
-                if(playRound(humanSelection, computerSelection)=="player"){
-                    humanScore= humanScore++;
-                    return `You win! ${humanSelection} beats ${computerSelection}`;
-                }else{
-                    computerScore= computerScore++
-                    return `You loss! ${computerSelection} beats ${humanSelection}`;
+                const humanChoice= getHumanChoice();
+                const computerChoice= getComputerChoice();
+                console.log(playRound(humanChoice, computerChoice));
+                console.log("===================");
+                if(checkWinner(humanChoice, computerChoice) == "player"){
+                    humanScore++;
+                }else if(checkWinner(humanChoice, computerChoice) == "computer"){
+                    computerScore++;
                 }
             }
-            // return "Game Over!";
+            console.log("Game Over");
+            if(humanScore > computerScore){
+                console.log("YOU'RE THE WINNER!");
+            }else if(computerScore > humanScore){
+                console.log("COMPUTER WINS!");
+            }else{
+                console.log("WE HAVE A TIE!");
+            }
         }
-        // console.log(playGame())
+        playGame()
+
+        
+
+    
     </script>
 </body>
 </html>
