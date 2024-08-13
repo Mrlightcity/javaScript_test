@@ -1,29 +1,8 @@
 
 
-function checkWinner(humanChoice, computerChoice){
-    if(humanChoice==computerChoice){
-        return "draw";
-    }else if(
-        humanChoice=="ROCK"&& computerChoice=="SCISSORS"||
-        humanChoice=="SCISSORS"&&computerChoice=="PAPER"||
-        humanChoice=="PAPER"&&computerChoice=="ROCK"
-    ){
-        return "player";
-    }else{
-        return "computer";
-    }
-}
 
-function playRound(humanChoice, computerChoice){
-    const result= checkWinner(humanChoice, computerChoice);
-    if(result=="draw"){
-        return "It's a DRAW";
-    }else if(result=="player"){
-        return `You win! ${humanChoice} beats ${computerChoice}`;
-    }else{
-        return `You loss! ${computerChoice} beats ${humanChoice}`;
-    }
-}
+
+
 function getHumanChoice(){
     let validChoice= false;
     while (validChoice==false){
@@ -67,6 +46,8 @@ function playGame(){
 // playGame()
 let playerChoice= document.querySelector(".playerChoice input");
 let computerChoice= document.querySelector(".computerChoice input");
+let round= document.querySelector(".round input");
+round.value= 0;
 
 const chioces=["ROCK","PAPER","SCISSORS"];
 
@@ -75,9 +56,24 @@ function getComputerChoice(){
     return comChoice;
 }
 
+function checkWinner(humanChoice, computerChoice){
+    if(humanChoice==computerChoice){
+        return "draw";
+    }else if(
+        humanChoice=="ROCK"&& computerChoice=="SCISSORS"||
+        humanChoice=="SCISSORS"&&computerChoice=="PAPER"||
+        humanChoice=="PAPER"&&computerChoice=="ROCK"
+    ){
+        return "player";
+    }else{
+        return "computer";
+    }
+}
+
 const firstButton= document.querySelector(".firstBtn");
 const secondButton= document.querySelector(".midBtn");
 const lastButton= document.querySelector(".lastBtn");
+
 
 firstButton.addEventListener("click", fstButtonClick);
 
@@ -85,6 +81,7 @@ function fstButtonClick(){
     const firstBtnClicked= 'ROCK';
     playerChoice.value= firstBtnClicked;
     computerChoice.value= getComputerChoice();
+    round.value ++
 }
 
 secondButton.addEventListener("click", secButtonClick);
@@ -93,6 +90,7 @@ function secButtonClick(){
     const secondBtnClicked= 'PAPER';
     playerChoice.value= secondBtnClicked;
     computerChoice.value= getComputerChoice();
+    round.value ++
 }
 
 lastButton.addEventListener("click", lstButtonClick);
@@ -101,5 +99,16 @@ function lstButtonClick(){
     const lastBtnClicked= 'SCISSORS';
     playerChoice.value= lastBtnClicked;
     computerChoice.value= getComputerChoice();
+    round.value ++
 }
 
+function playRound(humanChoice, computerChoice){
+    const result= checkWinner(humanChoice, computerChoice);
+    if(result=="draw"){
+        return "It's a DRAW";
+    }else if(result=="player"){
+        return `You win! ${humanChoice} beats ${computerChoice}`;
+    }else{
+        return `You loss! ${computerChoice} beats ${humanChoice}`;
+    }
+}
