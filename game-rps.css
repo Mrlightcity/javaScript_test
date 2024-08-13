@@ -1,0 +1,101 @@
+boby {
+    margin: 0;
+   
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    border-top: solid 18px rgb(114, 247, 114); 
+    border-left: solid 4px rgb(114, 247, 114);
+    border-right: solid 4px rgb(114, 247, 114); 
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#0eab4d ;
+    padding: 32px 0;
+    border-bottom: solid 8px black;
+}
+
+.roundAndScore,
+.playerAndComputerChoice {
+    display: flex;
+    justify-content: space-between;
+    margin: 28px 0;
+}
+
+.playerScore,
+.round,
+.computerScore,
+.playerChoice,
+.computerChoice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myInput,
+.myPrompt,
+.btn{
+    display: flex;
+    justify-content: center;
+}
+ 
+input {
+    color: white;
+    background-color: rgb(11, 126, 41);
+}
+
+.playerAndComputerChoice input{
+    width: 70px;
+}
+
+.roundAndScore,
+.playerAndComputerChoice{
+    margin: 8px;
+}
+
+.roundAndScore input{
+    width: 15px;
+}
+
+.myInput input{
+    width: 80px;
+    margin: 28px 0;
+}
+
+.myPrompt{
+    padding: 32px 0;
+}
+
+button {
+    align-self: center;
+    font-family: Roboto, sans-serif;
+    border: solid 2px blue;
+    margin: 0 4px;
+    border-radius: 8px;
+    background: #f5c209 ;
+    padding: 8px 8px;
+    width: 80px;
+    height: 80px; 
+    font-weight: bold;
+}
+
+.midBtn {
+    margin: 0 18px;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color:#0eab4d ;
+    margin-top: 18px;
+    padding: 12px 0;
+    border-bottom: solid 4px black;
+}
