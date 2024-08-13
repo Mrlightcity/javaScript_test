@@ -44,31 +44,23 @@ function playGame(){
  
 }
 // playGame()
+
+
+
 let playerChoice= document.querySelector(".playerChoice input");
 let computerChoice= document.querySelector(".computerChoice input");
 let round= document.querySelector(".round input");
 round.value= 0;
+let playerScore= document.querySelector(".playerScore input");
+let computerScore= document.querySelector(".computerScore input");
+playerScore.value= 0;
+computerScore.value= 0;
+let message= document.querySelector(".myPrompt");
 
 const chioces=["ROCK","PAPER","SCISSORS"];
 
-function getComputerChoice(){
-    let comChoice=chioces[Math.floor(Math.random()*chioces.length)];
-    return comChoice;
-}
 
-function checkWinner(humanChoice, computerChoice){
-    if(humanChoice==computerChoice){
-        return "draw";
-    }else if(
-        humanChoice=="ROCK"&& computerChoice=="SCISSORS"||
-        humanChoice=="SCISSORS"&&computerChoice=="PAPER"||
-        humanChoice=="PAPER"&&computerChoice=="ROCK"
-    ){
-        return "player";
-    }else{
-        return "computer";
-    }
-}
+
 
 const firstButton= document.querySelector(".firstBtn");
 const secondButton= document.querySelector(".midBtn");
@@ -77,38 +69,81 @@ const lastButton= document.querySelector(".lastBtn");
 
 firstButton.addEventListener("click", fstButtonClick);
 
-function fstButtonClick(){
+function fstButtonClick(e){
     const firstBtnClicked= 'ROCK';
     playerChoice.value= firstBtnClicked;
     computerChoice.value= getComputerChoice();
-    round.value ++
+    round.value ++;
+    const humanChoice= playerChoice.value;
+    const computer= computerChoice.value;
+    message.innerHTML= '<h4>'+playRound(humanChoice, computer)+'</h4>';
+    if(checkWinner(humanChoice, computer) == "player"){
+        playerScore.value ++;
+    }else if(checkWinner(humanChoice, computer) == "computer"){
+        computerScore.value ++;
+    }
 }
 
 secondButton.addEventListener("click", secButtonClick);
 
-function secButtonClick(){
+function secButtonClick(e){
     const secondBtnClicked= 'PAPER';
     playerChoice.value= secondBtnClicked;
     computerChoice.value= getComputerChoice();
-    round.value ++
+    round.value ++;
+    const humanChoice= playerChoice.value;
+    const computer= computerChoice.value;
+    message.innerHTML= '<h4>'+playRound(humanChoice, computer)+'</h4>';
+    if(checkWinner(humanChoice, computer) == "player"){
+        playerScore.value ++;
+    }else if(checkWinner(humanChoice, computer) == "computer"){
+        computerScore.value ++;
+    }
 }
 
 lastButton.addEventListener("click", lstButtonClick);
 
-function lstButtonClick(){
+function lstButtonClick(e){
     const lastBtnClicked= 'SCISSORS';
     playerChoice.value= lastBtnClicked;
     computerChoice.value= getComputerChoice();
-    round.value ++
+    round.value ++;
+    const humanChoice= playerChoice.value;
+    const computer= computerChoice.value;
+    message.innerHTML= '<h4>'+playRound(humanChoice, computer)+'</h4>';
+    if(checkWinner(humanChoice, computer) == "player"){
+        playerScore.value ++;
+    }else if(checkWinner(humanChoice, computer) == "computer"){
+        computerScore.value ++;
+    }
 }
 
-function playRound(humanChoice, computerChoice){
-    const result= checkWinner(humanChoice, computerChoice);
+function getComputerChoice(){
+    let comChoice=chioces[Math.floor(Math.random()*chioces.length)];
+    return comChoice;
+}
+
+function checkWinner(humanChoice, computer){
+    if(humanChoice==computer){
+        return "draw";
+    }else if(
+        humanChoice=="ROCK"&& computer=="SCISSORS"||
+        humanChoice=="SCISSORS"&&computer=="PAPER"||
+        humanChoice=="PAPER"&&computer=="ROCK"
+    ){
+        return "player";
+    }else{
+        return "computer";
+    }
+}
+
+function playRound(humanChoice, computer){
+    const result= checkWinner(humanChoice, computer);
     if(result=="draw"){
         return "It's a DRAW";
     }else if(result=="player"){
-        return `You win! ${humanChoice} beats ${computerChoice}`;
+        return `You win! ${humanChoice} beats ${computer}`;
     }else{
-        return `You loss! ${computerChoice} beats ${humanChoice}`;
+        return `You loss! ${computer} beats ${humanChoice}`;
     }
 }
