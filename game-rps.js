@@ -1,9 +1,4 @@
-const chioces=["ROCK","PAPER","SCISSORS"];
 
-function getComputerChoice(){
-    let comChoice=chioces[Math.floor(Math.random()*chioces.length)];
-    return comChoice;
-}
 
 function checkWinner(humanChoice, computerChoice){
     if(humanChoice==computerChoice){
@@ -71,6 +66,14 @@ function playGame(){
 }
 // playGame()
 let playerChoice= document.querySelector(".playerChoice input");
+let computerChoice= document.querySelector(".computerChoice input");
+
+const chioces=["ROCK","PAPER","SCISSORS"];
+
+function getComputerChoice(){
+    let comChoice=chioces[Math.floor(Math.random()*chioces.length)];
+    return comChoice;
+}
 
 const firstButton= document.querySelector(".firstBtn");
 const secondButton= document.querySelector(".midBtn");
@@ -81,6 +84,7 @@ firstButton.addEventListener("click", fstButtonClick);
 function fstButtonClick(){
     const firstBtnClicked= 'ROCK';
     playerChoice.value= firstBtnClicked;
+    computerChoice.value= getComputerChoice();
 }
 
 secondButton.addEventListener("click", secButtonClick);
@@ -88,6 +92,7 @@ secondButton.addEventListener("click", secButtonClick);
 function secButtonClick(){
     const secondBtnClicked= 'PAPER';
     playerChoice.value= secondBtnClicked;
+    computerChoice.value= getComputerChoice();
 }
 
 lastButton.addEventListener("click", lstButtonClick);
@@ -95,4 +100,6 @@ lastButton.addEventListener("click", lstButtonClick);
 function lstButtonClick(){
     const lastBtnClicked= 'SCISSORS';
     playerChoice.value= lastBtnClicked;
+    computerChoice.value= getComputerChoice();
 }
+
