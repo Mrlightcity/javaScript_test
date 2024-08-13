@@ -76,7 +76,10 @@ input {
 button {
     align-self: center;
     font-family: Roboto, sans-serif;
-    border: solid 2px blue;
+    border-bottom: solid 2px black;
+    border-left: solid 2px black;
+    border-right: solid 2px #0eab4d;
+    border-top: solid 2px #0eab4d;
     margin: 0 4px;
     border-radius: 8px;
     background: #f5c209 ;
