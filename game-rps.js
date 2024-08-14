@@ -1,61 +1,64 @@
+// function getHumanChoice(){
+//     let validChoice= false;
+//     while (validChoice==false){
+//         const myChoice= prompt("Enter: ROCK or PAPER or SCISSORS", '');
+//         if(myChoice==null){
+//             continue;
+//         }
+//         const capital= myChoice.toUpperCase();
+//         if(chioces.includes(capital)){
+//             validChoice== true;
+//             return capital;
+//         }
+//     }    
+// }
 
-
-
-
-
-function getHumanChoice(){
-    let validChoice= false;
-    while (validChoice==false){
-        const myChoice= prompt("Enter: ROCK or PAPER or SCISSORS", '');
-        if(myChoice==null){
-            continue;
-        }
-        const capital= myChoice.toUpperCase();
-        if(chioces.includes(capital)){
-            validChoice== true;
-            return capital;
-        }
-    }    
-}
-
-function playGame(){
-    let humanScore= 0;
-    let computerScore= 0;
-    console.log("Welcome PLAYER!");
-    for(let i=0; i<5; i++){
-        const humanChoice= getHumanChoice();
-        const computerChoice= getComputerChoice();
-        console.log(playRound(humanChoice, computerChoice));
-        console.log("===================");
-        if(checkWinner(humanChoice, computerChoice) == "player"){
-            humanScore++;
-        }else if(checkWinner(humanChoice, computerChoice) == "computer"){
-            computerScore++;
-        }
-    }   
-    console.log("Game Over");
-    if(humanScore > computerScore){
-        console.log("YOU'RE THE WINNER!");
-    }else if(computerScore > humanScore){
-        console.log("COMPUTER WINS!");
-    }else{
-        console.log("WE HAVE A TIE!");
-    }
+// function playGame(){
+//     let humanScore= 0;
+//     let computerScore= 0;
+//     console.log("Welcome PLAYER!");
+//     for(let i=0; i<5; i++){
+//         const humanChoice= getHumanChoice();
+//         const computerChoice= getComputerChoice();
+//         console.log(playRound(humanChoice, computerChoice));
+//         console.log("===================");
+//         if(checkWinner(humanChoice, computerChoice) == "player"){
+//             humanScore++;
+//         }else if(checkWinner(humanChoice, computerChoice) == "computer"){
+//             computerScore++;
+//         }
+//     }   
+//     console.log("Game Over");
+//     if(humanScore > computerScore){
+//         console.log("YOU'RE THE WINNER!");
+//     }else if(computerScore > humanScore){
+//         console.log("COMPUTER WINS!");
+//     }else{
+//         console.log("WE HAVE A TIE!");
+//     }
  
-}
+// }
 // playGame()
 
+const container= document.querySelector(".container");
 
+let playerChoice= document.querySelector(".playerChoice input"); 
 
-let playerChoice= document.querySelector(".playerChoice input");
 let computerChoice= document.querySelector(".computerChoice input");
+
 let round= document.querySelector(".round input");
+
 round.value= 0;
 let playerScore= document.querySelector(".playerScore input");
+
 let computerScore= document.querySelector(".computerScore input");
+
 playerScore.value= 0;
 computerScore.value= 0;
+
 let message= document.querySelector(".myPrompt");
+
+let myInput= document.querySelector(".myInput");
 
 const chioces=["ROCK","PAPER","SCISSORS"];
 
@@ -82,6 +85,14 @@ function fstButtonClick(e){
     }else if(checkWinner(humanChoice, computer) == "computer"){
         computerScore.value ++;
     }
+    if(playerScore.value == 5 || computerScore.value == 5){
+        myInput.children[0].value= 'GAME OVER';
+    }
+    if(playerScore.value == 5){
+        myInput.children[1].value= 'YOU WIN!';
+    }else if(computerScore.value == 5){
+        myInput.children[1].value= 'YOU LOSE!';
+    }
 }
 
 secondButton.addEventListener("click", secButtonClick);
@@ -99,6 +110,14 @@ function secButtonClick(e){
     }else if(checkWinner(humanChoice, computer) == "computer"){
         computerScore.value ++;
     }
+    if(playerScore.value == 5 || computerScore.value == 5){
+        myInput.children[0].value= 'GAME OVER';
+    }
+    if(playerScore.value == 5){
+        myInput.children[1].value= 'YOU WIN!';
+    }else if(computerScore.value == 5){
+        myInput.children[1].value= 'YOU LOSE!';
+    }
 }
 
 lastButton.addEventListener("click", lstButtonClick);
@@ -115,6 +134,14 @@ function lstButtonClick(e){
         playerScore.value ++;
     }else if(checkWinner(humanChoice, computer) == "computer"){
         computerScore.value ++;
+    }
+    if(playerScore.value == 5 || computerScore.value == 5){
+        myInput.children[0].value= 'GAME OVER';
+    }
+    if(playerScore.value == 5){
+        myInput.children[1].value= 'YOU WIN!';
+    }else if(computerScore.value == 5){
+        myInput.children[1].value= 'YOU LOSE!';
     }
 }
 
