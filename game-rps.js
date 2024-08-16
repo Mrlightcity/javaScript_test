@@ -39,6 +39,7 @@
  
 // }
 // playGame()
+const myButton= document.getElementsByTagName("button");
 
 const container= document.querySelector(".container");
 
@@ -53,6 +54,9 @@ let playerScore= document.querySelector(".playerScore input");
 
 let computerScore= document.querySelector(".computerScore input");
 
+let draw= document.querySelector(".draw input");
+
+draw.value=0;
 playerScore.value= 0;
 computerScore.value= 0;
 
@@ -73,6 +77,11 @@ const lastButton= document.querySelector(".lastBtn");
 firstButton.addEventListener("click", fstButtonClick);
 
 function fstButtonClick(e){
+    for(let i=0; i< myButton.length; i++){
+        myButton[i].style.backgroundColor= '#f0084e';
+        myButton[i].style.color= 'white';
+    }
+    
     const firstBtnClicked= 'ROCK';
     playerChoice.value= firstBtnClicked;
     computerChoice.value= getComputerChoice();
@@ -84,6 +93,8 @@ function fstButtonClick(e){
         playerScore.value ++;
     }else if(checkWinner(humanChoice, computer) == "computer"){
         computerScore.value ++;
+    }else{
+        draw.value ++;
     }
     if(playerScore.value == 5 || computerScore.value == 5){
         myInput.children[0].value= 'GAME OVER';
@@ -93,11 +104,53 @@ function fstButtonClick(e){
     }else if(computerScore.value == 5){
         myInput.children[1].value= 'YOU LOSE!';
     }
+
+    console.log(round.value)
+    let checkerPlayer;
+    let checkerComputer;
+    let checkerRound;
+    let n=1;
+    let m;
+
+    if(playerScore.value == 5 || computerScore.value == 5){
+        // const playerScored= playerScore.value;
+        // const computerScored= computerScore.value;
+        // const roundValue= round.value;
+        checkerRound= round.value;
+        console.log(checkerRound)
+        m= +checkerRound + n
+        
+       console.log(m)
+        
+        
+       
+        
+        // console.log(computerScored)
+        // console.log(playerScored)
+
+        // if(playerScore.value++> playerScored ||
+        //      computerScore.value++> computerScored ||
+        //     round.value++> roundValue
+        // ){
+        //     playerScore.value= 0;
+        //     computerScore.value= 0;
+        //     round.value= 0;
+        //     myInput.children[0].value= 'WELCOME'
+        // }
+        
+    }
+    if(checkerRound < round.value){
+        console.log("working")
+    } 
 }
 
 secondButton.addEventListener("click", secButtonClick);
 
 function secButtonClick(e){
+    for(let i=0; i< myButton.length; i++){
+        myButton[i].style.backgroundColor= '#2ea05c';
+        myButton[i].style.color= 'white';
+    }
     const secondBtnClicked= 'PAPER';
     playerChoice.value= secondBtnClicked;
     computerChoice.value= getComputerChoice();
@@ -109,6 +162,8 @@ function secButtonClick(e){
         playerScore.value ++;
     }else if(checkWinner(humanChoice, computer) == "computer"){
         computerScore.value ++;
+    }else{
+        draw.value ++;
     }
     if(playerScore.value == 5 || computerScore.value == 5){
         myInput.children[0].value= 'GAME OVER';
@@ -123,6 +178,10 @@ function secButtonClick(e){
 lastButton.addEventListener("click", lstButtonClick);
 
 function lstButtonClick(e){
+    for(let i=0; i< myButton.length; i++){
+        myButton[i].style.backgroundColor= '#0754ab';
+        myButton[i].style.color= 'white';
+    }
     const lastBtnClicked= 'SCISSORS';
     playerChoice.value= lastBtnClicked;
     computerChoice.value= getComputerChoice();
@@ -134,6 +193,8 @@ function lstButtonClick(e){
         playerScore.value ++;
     }else if(checkWinner(humanChoice, computer) == "computer"){
         computerScore.value ++;
+    }else{
+        draw.value ++;
     }
     if(playerScore.value == 5 || computerScore.value == 5){
         myInput.children[0].value= 'GAME OVER';
