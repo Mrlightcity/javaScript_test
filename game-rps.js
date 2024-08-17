@@ -1,44 +1,3 @@
-// function getHumanChoice(){
-//     let validChoice= false;
-//     while (validChoice==false){
-//         const myChoice= prompt("Enter: ROCK or PAPER or SCISSORS", '');
-//         if(myChoice==null){
-//             continue;
-//         }
-//         const capital= myChoice.toUpperCase();
-//         if(chioces.includes(capital)){
-//             validChoice== true;
-//             return capital;
-//         }
-//     }    
-// }
-
-// function playGame(){
-//     let humanScore= 0;
-//     let computerScore= 0;
-//     console.log("Welcome PLAYER!");
-//     for(let i=0; i<5; i++){
-//         const humanChoice= getHumanChoice();
-//         const computerChoice= getComputerChoice();
-//         console.log(playRound(humanChoice, computerChoice));
-//         console.log("===================");
-//         if(checkWinner(humanChoice, computerChoice) == "player"){
-//             humanScore++;
-//         }else if(checkWinner(humanChoice, computerChoice) == "computer"){
-//             computerScore++;
-//         }
-//     }   
-//     console.log("Game Over");
-//     if(humanScore > computerScore){
-//         console.log("YOU'RE THE WINNER!");
-//     }else if(computerScore > humanScore){
-//         console.log("COMPUTER WINS!");
-//     }else{
-//         console.log("WE HAVE A TIE!");
-//     }
- 
-// }
-// playGame()
 const myButton= document.getElementsByTagName("button");
 
 const container= document.querySelector(".container");
@@ -58,8 +17,7 @@ let draw= document.querySelector(".draw input");
 
 draw.value=0;
 playerScore.value= 0;
-computerScore.value= 0;
-let checkerRound= 1;
+computerScore.value=0;
 
 let message= document.querySelector(".myPrompt");
 
@@ -87,39 +45,7 @@ function fstButtonClick(e){
     playerChoice.value= firstBtnClicked;
     computerChoice.value= getComputerChoice();
     round.value ++;
-    const humanChoice= playerChoice.value;
-    const computer= computerChoice.value;
-    message.innerHTML= '<h4>'+playRound(humanChoice, computer)+'</h4>';
-    if(checkWinner(humanChoice, computer) == "player"){
-        playerScore.value ++;
-    }else if(checkWinner(humanChoice, computer) == "computer"){
-        computerScore.value ++;
-    }else{
-        draw.value ++;
-    }
-    if(round.value == 15){
-        myInput.children[0].value= 'GAME OVER';
-        if(playerScore.value > computerScore.value){
-            myInput.children[1].value= 'YOU WIN!';
-        }else if(computerScore.value > playerScore.value){
-            myInput.children[1].value= 'YOU LOSE!';
-        }else{
-            myInput.children[1].value= 'ITS A TIE'; 
-        }
-    }
-
-    if(round.value== 16){
-        round.value=0;
-        draw.value=0;
-        playerScore.value= 0;
-        computerScore.value= 0;
-        myInput.children[0].value= 'WELCOME';
-        myInput.children[1].value= 'PLAYER';
-        playerChoice.value='';
-        computerChoice.value='';
-        message.innerHTML= '<h4>'+'Click:' +' Rock, Paper or Scissors'+'</h4>'
-    }
-    
+    myFunction();   
 }
 
 secondButton.addEventListener("click", secButtonClick);
@@ -133,38 +59,7 @@ function secButtonClick(e){
     playerChoice.value= secondBtnClicked;
     computerChoice.value= getComputerChoice();
     round.value ++;
-    const humanChoice= playerChoice.value;
-    const computer= computerChoice.value;
-    message.innerHTML= '<h4>'+playRound(humanChoice, computer)+'</h4>';
-    if(checkWinner(humanChoice, computer) == "player"){
-        playerScore.value ++;
-    }else if(checkWinner(humanChoice, computer) == "computer"){
-        computerScore.value ++;
-    }else{
-        draw.value ++;
-    }
-    if(round.value == 15){
-        myInput.children[0].value= 'GAME OVER';
-        if(playerScore.value > computerScore.value){
-            myInput.children[1].value= 'YOU WIN!';
-        }else if(computerScore.value > playerScore.value){
-            myInput.children[1].value= 'YOU LOSE!';
-        }else{
-            myInput.children[1].value= 'ITS A TIE'; 
-        }
-    }
-
-    if(round.value== 16){
-        round.value=0;
-        draw.value=0;
-        playerScore.value= 0;
-        computerScore.value= 0;
-        myInput.children[0].value= 'WELCOME';
-        myInput.children[1].value= 'PLAYER';
-        playerChoice.value='';
-        computerChoice.value='';
-        message.innerHTML= '<h4>'+'Click:' +' Rock, Paper or Scissors'+'</h4>'
-    }
+    myFunction();
 }
 
 lastButton.addEventListener("click", lstButtonClick);
@@ -178,38 +73,7 @@ function lstButtonClick(e){
     playerChoice.value= lastBtnClicked;
     computerChoice.value= getComputerChoice();
     round.value ++;
-    const humanChoice= playerChoice.value;
-    const computer= computerChoice.value;
-    message.innerHTML= '<h4>'+playRound(humanChoice, computer)+'</h4>';
-    if(checkWinner(humanChoice, computer) == "player"){
-        playerScore.value ++;
-    }else if(checkWinner(humanChoice, computer) == "computer"){
-        computerScore.value ++;
-    }else{
-        draw.value ++;
-    }
-    if(round.value == 15){
-        myInput.children[0].value= 'GAME OVER';
-        if(playerScore.value > computerScore.value){
-            myInput.children[1].value= 'YOU WIN!';
-        }else if(computerScore.value > playerScore.value){
-            myInput.children[1].value= 'YOU LOSE!';
-        }else{
-            myInput.children[1].value= 'ITS A TIE'; 
-        }
-    }
-
-    if(round.value== 16){
-        round.value=0;
-        draw.value=0;
-        playerScore.value= 0;
-        computerScore.value= 0;
-        myInput.children[0].value= 'WELCOME';
-        myInput.children[1].value= 'PLAYER';
-        playerChoice.value='';
-        computerChoice.value='';
-        message.innerHTML= '<h4>'+'Click:' +' Rock, Paper or Scissors'+'</h4>'
-    }
+   myFunction();
 }
 
 function getComputerChoice(){
@@ -239,5 +103,40 @@ function playRound(humanChoice, computer){
         return `You win! ${humanChoice} beats ${computer}`;
     }else{
         return `You loss! ${computer} beats ${humanChoice}`;
+    }
+}
+
+function myFunction(){
+    const humanChoice= playerChoice.value;
+    const computer= computerChoice.value;
+    message.innerHTML= '<h4>'+playRound(humanChoice, computer)+'</h4>';
+    if(checkWinner(humanChoice, computer) == "player"){
+        playerScore.value++;
+    }else if(checkWinner(humanChoice, computer) == "computer"){
+        computerScore.value++;
+    }else{
+        draw.value ++;
+    }
+    if(round.value == 15){
+        myInput.children[0].value= 'GAME OVER';
+        if(playerScore.value > computerScore.value){
+            myInput.children[1].value= 'YOU WIN!';
+        }else if(computerScore.value > playerScore.value){
+            myInput.children[1].value= 'YOU LOSE!';
+        }else{
+            myInput.children[1].value= 'ITS A TIE'; 
+        }
+    }
+
+    if(round.value== 16){
+        round.value=0;
+        draw.value=0;
+        playerScore.value= 0;
+        computerScore.value= 0;
+        myInput.children[0].value= 'WELCOME';
+        myInput.children[1].value= 'PLAYER';
+        playerChoice.value='';
+        computerChoice.value='';
+        message.innerHTML= '<h4>'+'Click:' +' Rock, Paper or Scissors'+'</h4>'
     }
 }
