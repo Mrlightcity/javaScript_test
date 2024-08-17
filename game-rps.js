@@ -59,6 +59,7 @@ let draw= document.querySelector(".draw input");
 draw.value=0;
 playerScore.value= 0;
 computerScore.value= 0;
+let checkerRound= 1;
 
 let message= document.querySelector(".myPrompt");
 
@@ -96,52 +97,29 @@ function fstButtonClick(e){
     }else{
         draw.value ++;
     }
-    if(playerScore.value == 5 || computerScore.value == 5){
+    if(round.value == 15){
         myInput.children[0].value= 'GAME OVER';
-    }
-    if(playerScore.value == 5){
-        myInput.children[1].value= 'YOU WIN!';
-    }else if(computerScore.value == 5){
-        myInput.children[1].value= 'YOU LOSE!';
+        if(playerScore.value > computerScore.value){
+            myInput.children[1].value= 'YOU WIN!';
+        }else if(computerScore.value > playerScore.value){
+            myInput.children[1].value= 'YOU LOSE!';
+        }else{
+            myInput.children[1].value= 'ITS A TIE'; 
+        }
     }
 
-    console.log(round.value)
-    let checkerPlayer;
-    let checkerComputer;
-    let checkerRound;
-    let n=1;
-    let m;
-
-    if(playerScore.value == 5 || computerScore.value == 5){
-        // const playerScored= playerScore.value;
-        // const computerScored= computerScore.value;
-        // const roundValue= round.value;
-        checkerRound= round.value;
-        console.log(checkerRound)
-        m= +checkerRound + n
-        
-       console.log(m)
-        
-        
-       
-        
-        // console.log(computerScored)
-        // console.log(playerScored)
-
-        // if(playerScore.value++> playerScored ||
-        //      computerScore.value++> computerScored ||
-        //     round.value++> roundValue
-        // ){
-        //     playerScore.value= 0;
-        //     computerScore.value= 0;
-        //     round.value= 0;
-        //     myInput.children[0].value= 'WELCOME'
-        // }
-        
+    if(round.value== 16){
+        round.value=0;
+        draw.value=0;
+        playerScore.value= 0;
+        computerScore.value= 0;
+        myInput.children[0].value= 'WELCOME';
+        myInput.children[1].value= 'PLAYER';
+        playerChoice.value='';
+        computerChoice.value='';
+        message.innerHTML= '<h4>'+'Click:' +' Rock, Paper or Scissors'+'</h4>'
     }
-    if(checkerRound < round.value){
-        console.log("working")
-    } 
+    
 }
 
 secondButton.addEventListener("click", secButtonClick);
@@ -165,13 +143,27 @@ function secButtonClick(e){
     }else{
         draw.value ++;
     }
-    if(playerScore.value == 5 || computerScore.value == 5){
+    if(round.value == 15){
         myInput.children[0].value= 'GAME OVER';
+        if(playerScore.value > computerScore.value){
+            myInput.children[1].value= 'YOU WIN!';
+        }else if(computerScore.value > playerScore.value){
+            myInput.children[1].value= 'YOU LOSE!';
+        }else{
+            myInput.children[1].value= 'ITS A TIE'; 
+        }
     }
-    if(playerScore.value == 5){
-        myInput.children[1].value= 'YOU WIN!';
-    }else if(computerScore.value == 5){
-        myInput.children[1].value= 'YOU LOSE!';
+
+    if(round.value== 16){
+        round.value=0;
+        draw.value=0;
+        playerScore.value= 0;
+        computerScore.value= 0;
+        myInput.children[0].value= 'WELCOME';
+        myInput.children[1].value= 'PLAYER';
+        playerChoice.value='';
+        computerChoice.value='';
+        message.innerHTML= '<h4>'+'Click:' +' Rock, Paper or Scissors'+'</h4>'
     }
 }
 
@@ -196,13 +188,27 @@ function lstButtonClick(e){
     }else{
         draw.value ++;
     }
-    if(playerScore.value == 5 || computerScore.value == 5){
+    if(round.value == 15){
         myInput.children[0].value= 'GAME OVER';
+        if(playerScore.value > computerScore.value){
+            myInput.children[1].value= 'YOU WIN!';
+        }else if(computerScore.value > playerScore.value){
+            myInput.children[1].value= 'YOU LOSE!';
+        }else{
+            myInput.children[1].value= 'ITS A TIE'; 
+        }
     }
-    if(playerScore.value == 5){
-        myInput.children[1].value= 'YOU WIN!';
-    }else if(computerScore.value == 5){
-        myInput.children[1].value= 'YOU LOSE!';
+
+    if(round.value== 16){
+        round.value=0;
+        draw.value=0;
+        playerScore.value= 0;
+        computerScore.value= 0;
+        myInput.children[0].value= 'WELCOME';
+        myInput.children[1].value= 'PLAYER';
+        playerChoice.value='';
+        computerChoice.value='';
+        message.innerHTML= '<h4>'+'Click:' +' Rock, Paper or Scissors'+'</h4>'
     }
 }
 
